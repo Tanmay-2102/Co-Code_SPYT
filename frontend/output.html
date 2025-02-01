@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploaded Image</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <style>
+        .uploaded-image {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Uploaded Image</h1>
+            <img id="uploaded-image" class="uploaded-image" src="/placeholder.svg" alt="Uploaded Image">
+            <a href="index.html" class="button" style="margin-top: 20px;">Upload Another Image</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <h1>Output</h1>
+        <img id="output" class="uploaded-image" src="static/image.png" alt="Uploaded Image">
+    </div>
+</div>
+    <script>
+        const uploadedImage = document.getElementById('uploaded-image');
+        const imageData = localStorage.getItem('uploadedImage');
+        if (imageData) {
+            uploadedImage.src = imageData;
+        } else {
+            uploadedImage.alt = 'No image uploaded';
+        }
+    </script>
+</body>
+</html>
+
