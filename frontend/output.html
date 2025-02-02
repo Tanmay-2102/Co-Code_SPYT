@@ -25,9 +25,26 @@
 
     <div class="card">
         <h1>Output</h1>
-        <img id="output" class="uploaded-image" src="static/image.png" alt="Uploaded Image">
-    </div>
+            <p id="output-text" class="output-text">Your output text will appear here.</p>
+        </div>
 </div>
+    <script>
+        async function loadTextFile() {
+            try {
+                const response = await fetch('static/extracted_text.txt'); // Ensure correct path to your text file
+                console.log('Fetching:', 'static/extracted_text.txt'); // Debug log
+                if (response.ok) {
+                    const textContent = await response.text();
+                    const outputText = document.getElementById('output-text');
+                    outputText.textContent = textContent;  // Display the content in the 'output-text' element
+                }
+                }
+            catch (error) {
+                document.getElementById('output-text').textContent = "Error loading text file.";
+            }
+        }
+        window.onload = loadTextFile;
+    </script>
     <script>
         const uploadedImage = document.getElementById('uploaded-image');
         const imageData = localStorage.getItem('uploadedImage');
